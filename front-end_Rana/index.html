@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CVE Report Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>CVE Report Generator</h1>
+        <div id="menu">
+            <button onclick="generateReport()">Generate CVE Report</button>
+            <button onclick="exitProgram()">Exit</button>
+        </div>
+
+        <div id="cve-form" class="hidden">
+            <label for="cve-id">Enter CVE ID (e.g., CVE-2017-0144):</label>
+            <input type="text" id="cve-id" placeholder="CVE-YYYY-NNNN">
+            <button onclick="validateCVE()">Submit</button>
+        </div>
+
+        <div id="format-selection" class="hidden">
+            <p>Select Report Format:</p>
+            <button onclick="createReport('docx')">Word</button>
+            <button onclick="createReport('md')">Markdown</button>
+            <button onclick="createReport('pdf')">PDF</button>
+        </div>
+
+        <div id="result" class="hidden"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
