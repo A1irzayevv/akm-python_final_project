@@ -1,0 +1,11 @@
+In this project, I was able to lead a few key parts. 
+First, I wrote ai.py, which makes use of the Gemini API to pull in additional details about CVE IDs. 
+This involved writing good prompts and parsing through all of the responses from the API effectively. 
+I also wrote scraper.py, which interacts with both the MITRE and NVD APIs to scrape and process data on different CVEs. 
+In so doing, I was able to learn about the management and protection of API keys. 
+Last but not least, I worked on exploit.py and, through Selenium, web-scraped Exploit DB to pull relevant information on the given CVE IDs about exploits.
+
+The project contributed a lot to developing my skills in API integration and web scraping. 
+I learned how to keep sensitive information secure and how to ensure reliable data extraction. 
+Collaboration with the team was integral, involving clear communication and coordination to ensure everything fit perfectly into one piece. 
+This has been one of the most pronounced contributors to my growth in both technical and teamworking skills.
