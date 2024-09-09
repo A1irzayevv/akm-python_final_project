@@ -42,7 +42,7 @@ def ValidatorID(cveId):
     mitreUrl = f'https://cveawg.mitre.org/api/cve/{cveId}'
     mitreResponse = requests.get(mitreUrl)
     mitreData = mitreResponse.json()
-    if "error" in mitreData.keys():
+    if "error" in mitreData.keys() or mitreData["cveMetadata"]["state"] == "REJECTED":
         return "Error: (CVE_NOT_EXIST_OR_RESERVED)"
     return False
 
