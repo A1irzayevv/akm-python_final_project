@@ -1,9 +1,10 @@
 import os
 import google.generativeai as genai
 from dotenv import load_dotenv
-
-# Load environment variables from .env file
 load_dotenv()
+
+
+# Uzeyir Alirzayev – All python code was created for handle AI request/response part by me
 
 # Set up the Generative AI model with API key
 gemini_api_key = os.getenv("GOOGLE_API_KEY")
@@ -15,6 +16,14 @@ def return_gemini_response(prompt):
     return response
 
 def response_ai(cve_id):
+    """Function to generate prompt and send it to Gemini AI then accept answer from AI
+
+    Args:
+        cve_id (str): CVE ID as string
+
+    Returns:
+        str: Response of AI
+    """    
     prompt = f"""
     You are a cybersecurity assistant tasked with gathering detailed and accurate information about a given CVE (Common Vulnerabilities and Exposures) ID. Your job is to provide a human-friendly explanation of the vulnerability, its potential impact, and the recommended proactive measures or protections against it. Your response should be structured and easy to understand, even for those without a deep technical background.
 

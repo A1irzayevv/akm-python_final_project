@@ -6,8 +6,16 @@ from exploit import *
 from dotenv import load_dotenv
 load_dotenv()
 
-
+# Uzeyir Alirzayev – Function to apply regex,then NVD and Mitre for checking CVE_ID
 def Validator(cveId):
+    """ Regex and fields check of given CVE ID
+
+    Args:
+        cveId (str): CVE ID as string
+
+    Returns:
+        Boolean: True if CVE id is invalid, else False
+    """    
     cveRegex = r'^CVE-\d{4}-\d{4,8}$'
     if re.match(cveRegex, cveId):
         if cveId.split("-")[1].isdigit():
@@ -23,6 +31,14 @@ def Validator(cveId):
         return "Error: (INCORRECT_INPUT)"
 
 def ValidatorID(cveId):
+    """Helper function of Validator()
+
+    Args:
+        cveId (str): CVE ID as string
+
+    Returns:
+        Boolean or string: If CVE ID is not exists in database, then it returns error string, else False
+    """    
     mitreUrl = f'https://cveawg.mitre.org/api/cve/{cveId}'
     mitreResponse = requests.get(mitreUrl)
     mitreData = mitreResponse.json()
@@ -30,7 +46,16 @@ def ValidatorID(cveId):
         return "Error: (CVE_NOT_EXIST_OR_RESERVED)"
     return False
 
+# Uzeyir Alirzayev – Function to scrape NVD and Mitre for aviable data about CVE_ID
 def fetchData(cveId):
+    """Data about given CVE ID
+
+    Args:
+        cveId (str): CVE ID as string
+
+    Returns:
+        dictionary: Data about CVE ID as dictionary
+    """    
     nvd_api_key = os.getenv("NVD_API_KEY")
     nistUrl = f'https://services.nvd.nist.gov/rest/json/cves/2.0?cveId={cveId}'
     headers = {"apiKey": nvd_api_key,}

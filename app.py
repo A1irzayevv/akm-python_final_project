@@ -16,6 +16,7 @@ REPORTS_FOLDER = os.path.join(BASE_DIR, 'reports')
 if not os.path.exists(REPORTS_FOLDER):
     os.makedirs(REPORTS_FOLDER)
 
+# Uzeyir Alirzayev - The route '/' was created by me for handling home directory of our web app
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if (request.method == "POST"):
