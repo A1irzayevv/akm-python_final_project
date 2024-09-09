@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CVE Parser</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CVE Parser</h1>
+            <p>Enter a CVE ID to get detailed information.</p>
+        </header>
+
+        <main>
+            <form action="/" method="post" class="cve-form" novalidate>
+                <div class="form-group">
+                    <label for="input">Search for a CVE:</label>
+                    <input type="text" name="cve" id="input" placeholder="Type here, JAMES :D" required>
+                    <button type="submit">Search</button>
+                </div>
+                <div id="form-feedback" class="form-feedback"></div>
+            </form>
+
+            <section class="results">
+                {% if error %}
+                    <div class="error-message">{{ error }}</div>
+                {% elif data %}
+                <!-- Severity and Score Circle Section -->
+                <div class="severity-score-container">
+                    <div class="cve-severity">
+                        <h2>Severity</h2>
+                        <p>{{ data['Severity'] }}</p>
+                    </div>
+                    <div class="score-container">
+                        <div class="score-circle" data-score="{{ data['Score'] }}">{{ data['Score'] }}</div>
+                    </div>
+                </div>
+
+                <!-- Other CVE Details -->
+                <div class="cve-details">
+                    <div class="cve-item">
+                        <h2>CVE ID</h2>
+                        <p>{{ data['CVE ID'] }}</p>
+                    </div>
+                    <div class="cve-item">
+                        <h2>CVSS Vector</h2>
+                        <p>{{ data['CVSS Vector'] }}</p>
+                    </div>
+                    <div class="cve-item">
+                        <h2>Description</h2>
+                        <p>{{ data['Description'] }}</p>
+                    </div>
+                    <div class="cve-item">
+                        <h2>Confidentiality Impact</h2>
+                        <p>{{ data['confidentialityImpact'] }}</p>
+                    </div>
+                    <div class="cve-item">
+                        <h2>Integrity Impact</h2>
+                        <p>{{ data['integrityImpact'] }}</p>
+                    </div>
+                    <div class="cve-item">
+                        <h2>Availability Impact</h2>
+                        <p>{{ data['availabilityImpact'] }}</p>
+                    </div>
+                    <div class="cve-item">
+                        <h2>Attack Vector</h2>
+                        <p>{{ data['attackVector'] }}</p>
+                    </div>
+                    <div class="cve-item">
+                        <h2>Vendor</h2>
+                        <p>{{ data['Vendor'] }}</p>
+                    </div>
+                    <div class="cve-item">
+                        <h2>Product</h2>
+                        <p>{{ data['Product'] }}</p>
+                    </div>
+                    <div class="cve-item">
+                        <h2>State</h2>
+                        <p>{{ data['State'] }}</p>
+                    </div>
+                    <div class="cve-item">
+                    <h2>Exploit Information</h2>
+                    {% if data['Exploits'] == ["N/A"] %}
+                        <p>No exploits found for this CVE.</p>
+                    {% else %}
+                        <table class="exploit-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Title</th>
+                                    <th>Type</th>
+                                    <th>Platform</th>
+                                    <th>Author</th>
+                                    <th>Download</th>
+                                    <th>Exploit Link</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for exploit in data['Exploits'] %}
+                                    <tr>
+                                        <td>{{ exploit['Date'] }}</td>
+                                        <td>{{ exploit['Title'] }}</td>
+                                        <td>{{ exploit['Type'] }}</td>
+                                        <td>{{ exploit['Platform'] }}</td>
+                                        <td>{{ exploit['Author'] }}</td>
+                                        <td><a href="{{ exploit['D'] }}" target="_blank">Download</a></td>
+                                        <td><a href="{{ exploit['A'] }}" target="_blank">Exploit</a></td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    {% endif %}
+                </div>
+                    <div class="cve-item">
+                        <h2>AI Response</h2>
+                        <p>{{ ai_response | safe }}</p>  <!-- Mark data as safe HTML -->
+                    </div>
+                </div>
+
+                 <!-- AI Response Section 
+                <div id="cve-report" class="cve-item">
+                    <h2>AI Response</h2>
+                    <p>{{ ai_response | safe }}</p>  Mark data as safe HTML
+                </div> -->
+                <div class="download-section">
+                    <h3>Download Report for {{ data['CVE ID'] }}</h3>
+                    <form method="POST" action="/download/{{ data['CVE ID'] }}" enctype="multipart/form-data">
+                        <label for="downloadType">Select Download Type:</label>
+                        <select name="downloadType" id="downloadType">
+                            <option value="pdf">PDF</option>
+                            <option value="docx">Word</option>
+                            <option value="md">Markdown</option>
+                        </select>
+                        <button type="submit">Download</button>
+                    </form>
+                </div>
+                <!-- Download Section -->
+                <!-- <div class="download-section">
+                    <h3>Download Report for {{ data['CVE ID'] }}</h3>
+                    <form method="POST" action="/download/{{ data['CVE ID'] }}" enctype="multipart/form-data">
+                        <label for="downloadType">Select Download Type:</label>
+                        <select name="downloadType" id="downloadType">
+                            <option value="pdf">PDF</option>
+                            <option value="docx">Word</option>
+                            <option value="md">Markdown</option>
+                        </select>
+                        <button type="submit">Download</button>
+                    </form>
+                </div> -->
+
+                {% endif %}
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 CVE Parser Tool | Designed for security enthusiasts by ACC group B</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

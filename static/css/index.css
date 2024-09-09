@@ -1,0 +1,287 @@
+/* Basic Reset and Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f4f4;
+}
+
+.container {
+  max-width: 800px;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  position: relative;
+}
+
+/* Flexbox to align Severity and Score Circle in a row */
+.severity-score-container {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  justify-content: space-between; /* Space between severity and score circle */
+  margin-bottom: 20px;
+}
+
+.cve-severity {
+  flex: 1;
+}
+
+.cve-severity p{
+  font-size: 1rem;
+  color: #333;
+}
+
+.score-container {
+  display: flex;
+  align-items: center;
+}
+
+.score-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: #fff;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+/* Color classes for score circle */
+.score-circle.low {
+  background-color: green;
+}
+
+.score-circle.medium {
+  background-color: orange; 
+}
+
+.score-circle.high {
+  background-color: red; 
+}
+
+.score-circle.unknown {
+  background-color: #6c757d; 
+}
+
+header {
+  background-color: #4a90e2;
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin-bottom: 0.5rem;
+}
+
+main {
+  padding: 20px;
+}
+
+.cve-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.cve-form input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.cve-form button {
+  padding: 10px;
+  background-color: #4a90e2;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+}
+
+.cve-form button:hover {
+  background-color: #357ab7;
+}
+
+.form-feedback {
+  color: #e74c3c;
+  display: none;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.results {
+  margin-top: 20px;
+}
+
+/* CVE Details Sections, each one should appear as a block */
+.cve-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.cve-item {
+  flex: 1 1 100%; /* Make each cve-item take up the full row */
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.cve-severity {
+  /* flex: 1 1 100%; Make each cve-item take up the full row */
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.cve-item h2 {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  color: #4a90e2;
+}
+
+.cve-severity h2 {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  color: #4a90e2;
+}
+
+.cve-item p {
+  font-size: 1rem;
+  color: #333;
+}
+
+.reference-list {
+  list-style: none;
+  padding: 0;
+}
+
+.reference-list li {
+  margin-bottom: 5px;
+}
+
+.error-message {
+  color: #e74c3c;
+  background-color: #f8d7da;
+  padding: 10px;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+}
+
+footer {
+  background-color: #f1f1f1;
+  text-align: center;
+  padding: 10px;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+/* Style for the download section */
+.download-section {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.download-section h2 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+/* Style for download buttons */
+.download-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.download-buttons .btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.download-buttons .btn:hover {
+  background-color: #0056b3;
+}
+
+/* Adjust the size and alignment for different devices */
+@media (max-width: 768px) {
+  .download-buttons {
+      flex-direction: column;
+      gap: 5px;
+  }
+
+  .download-buttons .btn {
+      width: 100%;
+  }
+}
+
+/* Style for the exploit data section */
+.exploit-data {
+  margin-top: 30px;
+}
+
+.exploit-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.exploit-table th, .exploit-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.exploit-table th {
+  background-color: #f4f4f4;
+  color: #4a90e2;
+}
+
+.exploit-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.exploit-table a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.exploit-table a:hover {
+  text-decoration: underline;
+}
