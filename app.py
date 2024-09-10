@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, send_file, abort
 from flask_cors import CORS
 from scraper import *
 from ai import response_ai
+from referenceopener import *
 from report import generate_pdf, generate_docx, generate_markdown  # Import specific report functions
 import os
 
@@ -26,6 +27,7 @@ def index():
             data = fetchData(id)
             ai_response = response_ai(id)
             if type(data) is dict:
+                open_cve_links(id, data["References"])
                 return render_template('index1.html', data=data, ai_response = ai_response)
         else:
             return render_template('index1.html', error=validation)
