@@ -2,7 +2,17 @@ import webbrowser
 import random
 import requests
 
+
+# xx
 def is_link_valid(url):
+    """Check links if it is valid by sending request
+
+    Args:
+        url (str): url to check by finction
+
+    Returns:
+        Boolean: True if link valid, False if link is broken
+    """    
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
     }
