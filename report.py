@@ -14,6 +14,7 @@ def strip_html_tags(text):
     # Remove other HTML tags
     text = re.sub(r'<.*?>', '', text)
     text = unescape(text)  # Decode HTML entities
+    text = text.replace('’', "'")
     return text
 
 class PDF(FPDF):
