@@ -71,6 +71,8 @@ This project is organized into several Python modules, each responsible for diff
 
 - **`report.py`**: This module is responsible for generating reports based on the scraped data. It includes functions to generate reports in PDF, DOCX, and Markdown formats.
 
+- **`referenceopener.py`**: This module is responsible for opening reports based on the scraped data. It includes functions to check links, then open references on new tabs based on number of references.
+
 - **`templates/`**: This directory contains the HTML files (using Jinja2 templates) for the front-end, including `index.html` for the input form and for displaying the scraped CVE data.
 
 - **`static/`**: This directory holds static files like CSS and JavaScript, used for styling the front-end and adding interactivity.
