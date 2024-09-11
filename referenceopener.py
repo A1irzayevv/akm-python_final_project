@@ -3,7 +3,7 @@ import random
 import requests
 
 
-# xx
+# Rahim Sadigov - checks if url is valid, then if yes, opens it in new tab.
 def is_link_valid(url):
     """Check links if it is valid by sending request
 
