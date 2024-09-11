@@ -5,6 +5,8 @@ from ai import response_ai
 from referenceopener import *
 from report import generate_pdf, generate_docx, generate_markdown  # Import specific report functions
 import os
+import webbrowser  # Import the webbrowser module
+import threading  # To avoid blocking the Flask app
 
 app = Flask(__name__)
 CORS(app)
@@ -28,7 +30,7 @@ def index():
             ai_response = response_ai(id, data)
             if type(data) is dict:
                 open_cve_links(id, data["References"])
-                return render_template('index1.html', data=data, ai_response = ai_response)
+                return render_template('index1.html', data=data, ai_response=ai_response)
         else:
             return render_template('index1.html', error=validation)
     return render_template('index1.html')
@@ -42,7 +44,7 @@ def download(cve_id):
 
     # Fetch the CVE data and AI response
     data = fetchData(cve_id)
-    ai_response = response_ai(cve_id)  # Fetch the AI-generated summary
+    ai_response = response_ai(cve_id, data)  # Fetch the AI-generated summary
     if data is None:
         return render_template('index1.html', error="Failed to fetch CVE data for download.")
     
@@ -66,6 +68,11 @@ def download(cve_id):
         print(f"Error generating or sending file: {e}")
         return render_template('index1.html', error=f"An error occurred: {str(e)}")
 
+# Function to open the browser in a new thread
+def open_browser():
+    webbrowser.open_new_tab('http://127.0.0.1:5000/')
 
 if __name__ == '__main__':
+    # Start a new thread to open the browser
+    threading.Timer(1, open_browser).start()
     app.run()
