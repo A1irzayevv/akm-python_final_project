@@ -25,7 +25,7 @@ def index():
         validation = Validator(id)
         if validation == False:
             data = fetchData(id)
-            ai_response = response_ai(id)
+            ai_response = response_ai(id, data)
             if type(data) is dict:
                 open_cve_links(id, data["References"])
                 return render_template('index1.html', data=data, ai_response = ai_response)

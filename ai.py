@@ -15,7 +15,7 @@ def return_gemini_response(prompt):
     response = model.generate_content(prompt)
     return response
 
-def response_ai(cve_id):
+def response_ai(cve_id, data):
     """Function to generate prompt and send it to Gemini AI then accept answer from AI
 
     Args:
@@ -28,9 +28,11 @@ def response_ai(cve_id):
     You are a cybersecurity assistant tasked with gathering detailed and accurate information about a given CVE (Common Vulnerabilities and Exposures) ID. Your job is to provide a human-friendly explanation of the vulnerability, its potential impact, and the recommended proactive measures or protections against it. Your response should be structured and easy to understand, even for those without a deep technical background.
 
     Here is the CVE ID: {cve_id}
+    Here is the scraped data about given CVE ID as dictionary: {data}
 
     Instructions:
     Be very precise!!! (Don't generate unrelated text to given CVE ID)
+    Also use given dictionary as reference if you need more detail. Don't only rely on data in given dictionary try to search web CVE ID but also try to use dat in dictionary for more precise prompts. 
     Identify the CVE:
 
     Use trusted sources (NVD, MITRE, security advisories, etc.) to gather a full description of the CVE.
