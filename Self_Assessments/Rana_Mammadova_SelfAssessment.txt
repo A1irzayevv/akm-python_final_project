@@ -1,0 +1,7 @@
+During the CVE parser project, I was responsible for preparing report.lab, where I focused on generating and downloading reports in multiple formats (PDF, Word, and Markdown) to their respective files. This task required a deep understanding of file generation processes and integrating different formats seamlessly.
+
+Additionally, I contributed to the front-end aspect of the project, where I helped create interactive buttons and design the visual representation of AI response summaries on the web. Collaborating with Rahim, we shared responsibilities and ensured the interface was user-friendly and effective in displaying data.
+
+Communication was key in this project, especially as I worked closely with Rahim, Elmar, and Uzeyir. Together, we identified and corrected issues in real time, providing each other with feedback and support. Our teamwork was critical in maintaining the quality of the project and ensuring the accuracy of our work.
+
+This experience helped me further develop my skills in both backend processes (report generation and API integration) and frontend development (UI interaction), while reinforcing my ability to collaborate effectively within a team.

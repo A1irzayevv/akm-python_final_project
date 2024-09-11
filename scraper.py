@@ -101,6 +101,10 @@ def fetchData(cveId):
             CVSSData = {}
             severity = "Not determined"
             score = "N/A"
+            conf = "N/A"
+            integ = "N/A"
+            aviab = "N/A"
+            vector = "N/A"
 
         if mitreData["containers"]["cna"]["affected"] and mitreData["containers"]["cna"]["affected"][0]:
             vendor = mitreData["containers"]["cna"]["affected"][0].get("vendor", "N/A")

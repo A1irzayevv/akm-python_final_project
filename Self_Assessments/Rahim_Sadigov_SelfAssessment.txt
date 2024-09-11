@@ -1,0 +1,8 @@
+
+
+In our CVE scraper project, I was actively involved in the front-end development with Rana, using HTML, CSS, and JavaScript to build a responsive and user-friendly interface. A significant part of my contribution was developing the report.py module, which allows users to download CVE data in multiple formats, including Markdown, Word, and PDF. This involved leveraging libraries like docx and reportlab to ensure that the reports were well-structured and easily accessible.
+
+I also took on the task of creating connectivity between the front-end and the backend engine, ensuring seamless data flow and integration across the application. Additionally, I developed my own version of the CVE scraper; however, we opted to use Uzeyir's version due to its superior results and performance.
+
+This project provided me with valuable experience in front-end, python development, report generation, and full-stack integration. It also highlighted the importance of collaboration and flexibility in a team setting, as we worked together to evaluate and choose the best solutions for our project. Overall, this experience greatly enhanced my technical skills and my ability to work effectively within a team.
+
