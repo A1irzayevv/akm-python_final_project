@@ -19,7 +19,8 @@ def is_link_valid(url):
     try:
         # Use requests.get with allow_redirects=True to follow redirects
         response = requests.get(url, headers=headers, timeout=5, allow_redirects=True)
-        return response.status_code == 200
+        # Normally, I will only leave status_code 200 as allowed. But shitty Microsoft webpages return unofficial self-made 999 response code. Hovewer if it is Microsoft page it will open normally even it returns 999.
+        return (response.status_code == 200) or (response.status_code == 999 and "microsoft" in url)
     except requests.RequestException:
         return False
 

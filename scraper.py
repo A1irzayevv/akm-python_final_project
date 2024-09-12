@@ -73,7 +73,7 @@ def fetchData(cveId):
         for reference in nistData["vulnerabilities"][0]["cve"]["references"]:
             if "tags" in reference and "Broken Link" in reference["tags"]:
                 continue
-            elif ("tags" in reference and "Exploit" in reference["tags"]) or reference["url"].startswith("https://www.exploit-db.com"):
+            elif reference["url"].startswith("https://"):
                 references.append(reference["url"])
         if len(references) == 0:
             references = ["N/A"]
