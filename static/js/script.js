@@ -1,3 +1,4 @@
+// Rana Mammadova- I wrote Js code for the cvss score
 document.addEventListener("DOMContentLoaded", function () {
     // Color the score circle based on value
     const scoreCircle = document.querySelector(".score-circle");
