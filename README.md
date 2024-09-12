@@ -17,6 +17,7 @@ This Python-based tool automates the process of gathering and analyzing informat
 
 
 ## **Run Locally**
+### We assume that, you are using WINDOWS MACHINE WITH GOOGLE CHROME. Failing to follow these rules will cause errors!
 
 Clone the project
 
