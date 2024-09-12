@@ -35,6 +35,7 @@ def index():
             return render_template('index1.html', error=validation)
     return render_template('index1.html')
 
+# Elmar Jafarzade - This code is used to call report.py and  add ai response .
 @app.route('/download/<cve_id>', methods=['POST'])
 @app.route('/download/<cve_id>', methods=['POST'])
 def download(cve_id):
