@@ -4,7 +4,8 @@ from fpdf import FPDF
 from docx import Document
 import os
 
-# Function to remove HTML tags and decode HTML entities
+# Rana Mammadova- generate pdf and docx files about CVE results
+
 def strip_html_tags(text):
     clean = re.compile('<.*?>')
     text = re.sub(clean, '', text)  # Remove HTML tags
@@ -93,7 +94,7 @@ def generate_docx(data, folder, filename):
     except Exception as e:
         print(f"Error generating DOCX: {e}")
         raise
-
+# Rahim Sadigov - generate markdown file about CVE search results.
 def generate_markdown(data, folder, filename):
     try:
         md_content = "# CVE Report\n\n"
